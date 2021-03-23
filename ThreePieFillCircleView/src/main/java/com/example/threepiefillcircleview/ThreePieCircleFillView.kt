@@ -218,4 +218,13 @@ class ThreePieCircleFillView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ThreePieCircleFillView {
+            val view : ThreePieCircleFillView = ThreePieCircleFillView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
