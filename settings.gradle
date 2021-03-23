@@ -1,0 +1,3 @@
+include ':ThreePieFillCircleView'
+include ':app'
+rootProject.name = "LinkedThreePieFillCircleView"
