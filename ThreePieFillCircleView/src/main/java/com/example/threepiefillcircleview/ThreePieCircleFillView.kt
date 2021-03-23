@@ -193,4 +193,27 @@ class ThreePieCircleFillView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ThreePieCircleFillView) {
+
+        private val animator : Animator = Animator(view)
+        private val tpcf : ThreePieCircleFill = ThreePieCircleFill(0)
+        private val PAINT : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tpcf.draw(canvas, PAINT)
+            animator.animate {
+                tpcf.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tpcf.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
